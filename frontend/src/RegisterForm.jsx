@@ -1,7 +1,5 @@
 
 function RegisterForm({ username, setUsername, email, setEmail, password, setPassword, handleSubmitRegister }) {
-
-
   return (
     <>
     <h1>REGISTER</h1>

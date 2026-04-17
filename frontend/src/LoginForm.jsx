@@ -1,7 +1,5 @@
 
 function LoginForm({email, setEmail, password, setPassword, handleSubmitLogin}) {
-
-
   return (
     <>
     <h1>LOGIN</h1>
