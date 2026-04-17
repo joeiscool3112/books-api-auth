@@ -45,6 +45,7 @@ function Booklist({
           <li key={book.id} className="book-item">
             <span>
               <strong>{book.title}</strong> - {book.genre}
+              <h4>Author: {book.author}</h4>
             </span>
 
             <button onClick={() => handleDeleteBook(book.id)}>

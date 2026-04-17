@@ -6,8 +6,18 @@ const authMiddleware = require("../middleware/mauth");
 // GET /api/books
 router.get("/", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM books");
+    const result = await pool.query(`
+      SELECT 
+        books.id,
+        books.title,
+        books.genre,
+        books.user_id,
+        users.username AS author
+      FROM books
+      JOIN users ON books.user_id = users.id
+    `);
     res.json(result.rows);
+    
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });

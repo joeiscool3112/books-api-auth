@@ -135,6 +135,7 @@ async function handleSubmitLogin(e) {
     try {
       const res = await fetch(`${API_URL}/api/books`);
       const data = await res.json();
+      console.log("book:", data);
 
       if (!res.ok) {
         setError(data.error || "Failed to fetch books");
