@@ -133,7 +133,7 @@ async function handleSubmitLogin(e) {
   
   const fetchBooks = async () => {
     try {
-      const res = await fetch(`$${API_URL}/api/books`);
+      const res = await fetch(`${API_URL}/api/books`);
       const data = await res.json();
 
       if (!res.ok) {
