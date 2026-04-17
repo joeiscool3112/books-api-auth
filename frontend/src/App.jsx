@@ -3,6 +3,7 @@ import './App.css'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
 import Booklist from './Booklist'
+import API_URL from './config'
 
 function App() {
 const [registerEmail, setRegisterEmail] = useState('');
@@ -26,7 +27,7 @@ useEffect(() => {
     if (!token) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch(`${API_URL}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,7 +70,7 @@ async function handleSubmitRegister(e) {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/auth/register", {
+    const response = await fetch(`${API_URL}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +108,7 @@ async function handleSubmitLogin(e) {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -132,7 +133,7 @@ async function handleSubmitLogin(e) {
   
   const fetchBooks = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/books");
+      const res = await fetch(`$${API_URL}/api/books`);
       const data = await res.json();
 
       if (!res.ok) {
@@ -161,7 +162,7 @@ async function handleSubmitLogin(e) {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/books", {
+      const res = await fetch(`${API_URL}/api/books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -196,7 +197,7 @@ async function handleSubmitLogin(e) {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/books/${bookId}`, {
+      const res = await fetch(`${API_URL}/api/books/${bookId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
