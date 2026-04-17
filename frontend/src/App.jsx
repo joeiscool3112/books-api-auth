@@ -16,6 +16,7 @@ const [registerError, setRegisterError] = useState("");
 const [loginError, setLoginError] = useState("");
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [usercreated, setUserCreated] = useState(false);
+const [username, setUsername] = useState("");
 const [activeTab, setActiveTab] = useState("register");
 const [books, setBooks] = useState([]);
 const [title, setTitle] = useState("");
@@ -91,6 +92,7 @@ async function handleSubmitRegister(e) {
 
     localStorage.setItem("token", data.token);
     setIsLoggedIn(true);
+    setUsername(data.username)
     setRegisterError("");
   } catch (err) {
     console.error("REGISTER ERROR:", err);
@@ -125,6 +127,8 @@ async function handleSubmitLogin(e) {
 
     localStorage.setItem("token", data.token);
     setIsLoggedIn(true);
+    console.log(data)
+    setUsername(data.user.username);
     setLoginError("");
   } catch (err) {
     setLoginError("Server error");
@@ -135,8 +139,6 @@ async function handleSubmitLogin(e) {
     try {
       const res = await fetch(`${API_URL}/api/books`);
       const data = await res.json();
-      console.log("book:", data);
-
       if (!res.ok) {
         setError(data.error || "Failed to fetch books");
         return;
@@ -228,7 +230,7 @@ async function handleSubmitLogin(e) {
             setIsLoggedIn(false);
           }}
         >
-          Logout
+          {username} - Logout
         </button>
 
         <Booklist 
