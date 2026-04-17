@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
-import Booklist from './BookList'
+import Booklist from './BookList.jsx'
 
 function App() {
 const [registerEmail, setRegisterEmail] = useState('');
